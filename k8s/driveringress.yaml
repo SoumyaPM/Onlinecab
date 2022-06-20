@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+ name: driver-ingress
+spec:
+ ingressClassName: kong
+ rules:
+ - http:
+     paths:
+     - path: /driver/v1
+       pathType: ImplementationSpecific
+       backend:
+         service:
+           name: getalldrivers
+           port:
+             number: 80
